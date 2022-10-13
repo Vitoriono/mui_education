@@ -1,6 +1,5 @@
-import { Drawer, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import { Drawer, List, ListItem, ListItemIcon, ListItemText, Divider, Typography } from "@mui/material";
 import { ShoppingBasket } from "@mui/icons-material";
-import {Divider} from "@mui/material";
 import BasketItem from "./BasketItem";
 
 const Basket = (props) => {
@@ -8,8 +7,8 @@ const Basket = (props) => {
   const {
       cartOpen, 
       closeCart = Function.prototype, 
-      order, 
-      removefromOrder
+      order = [], 
+      removeFromOrder
 } = props;
 
   return (
@@ -23,16 +22,28 @@ const Basket = (props) => {
               <ListItemIcon>
                   <ShoppingBasket/>
               </ListItemIcon>
-              <ListItemText primary="Корзина"/>
+              <ListItemText primary="Кошик"/>
           </ListItem>
           <Divider/>
         
-          {!order.lenght ? (
-              <ListItem>Корзина пуста!</ListItem>
+          {!order.length ? (
+              <ListItem>Кошик порожній!</ListItem>
           ) : (
-            order.map((item) =>(
-              <BasketItem key={item.name} {...item}/>
-           ))
+              <>
+           { order.map((item) =>(
+              <BasketItem key={item.name} removeFromOrder={removeFromOrder} {...item}/>
+           ))}
+           <Divider/>
+           <ListItem>
+              <Typography sx={{fontWeight: 700}}>
+              Загальна вартість:{' '}
+                {order.reduce((acc, item) => {
+                    return acc + item.price * item.quantity;
+                }, 0)}{' '}
+                гривень.
+              </Typography>
+           </ListItem>
+           </>
           )}
 
       </List>

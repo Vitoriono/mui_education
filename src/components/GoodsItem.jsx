@@ -25,7 +25,7 @@ const GoodsItem = (props) => {
                     >
                         {name}
                     </Typography>
-                    <Typography variant="body1">Цена: {price} руб.</Typography>
+                    <Typography variant="body1">Ціна: {price} грн.</Typography>
                 </CardContent> 
                 <CardActions>  
                     <Button
@@ -38,7 +38,7 @@ const GoodsItem = (props) => {
                             })
                         }
                     >
-                        Купить
+                        Придбати
                     </Button>
                 </CardActions>
             </Card>

@@ -1,9 +1,9 @@
 import { ShoppingBasket } from "@mui/icons-material";
-import { IconButton, AppBar, Toolbar, Typography } from "@mui/material";
- 
+import { IconButton, AppBar, Toolbar, Typography, Badge } from "@mui/material";
+   
 
 
-function Header({handleCart}) {
+function Header({handleCart, orderLen}) {
   return (
     <AppBar 
      position="static"
@@ -14,12 +14,16 @@ function Header({handleCart}) {
             component="span"
             sx={{flexGrow: 1}}
         >
-          My Shop
+          Книжкова крамниця
         </Typography>
         <IconButton
             color="inherit"
             onClick={handleCart}
         >
+          <Badge
+              color="secondary"
+              badgeContent={orderLen}
+          />
           <ShoppingBasket/>
         </IconButton>
       </Toolbar>

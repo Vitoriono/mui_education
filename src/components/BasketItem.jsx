@@ -1,13 +1,16 @@
-import { IconButton, ListItem } from "@mui/material";
-import {Close} from "@material-ui/icons";
+import { IconButton, ListItem, Typography } from "@mui/material";
+import { Close } from "@mui/icons-material";
 
-const BasketItem = ({removefromOrderove, id, name, price, quantity}) => {
+const BasketItem = ({removeFromOrder, id, name, price, quantity}) => {
     return (
         <ListItem>
-            {name} {price}руб x{quantity}
+            <Typography
+                variant="body1"
+            >
+                {name} {price}грн x{quantity}
+            </Typography>
             <IconButton
-                className='btn btn-primary'
-                onClick={() => props.removefromOrder(id)}
+                onClick={() => removeFromOrder(id)}
             >
                 <Close />
             </IconButton>
